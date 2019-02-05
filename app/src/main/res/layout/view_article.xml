@@ -7,9 +7,8 @@
     android:layout_height="wrap_content"
     android:background="?selectableItemBackground">
 
-
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -25,17 +24,17 @@
 
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/dateView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/titleView"
+        app:layout_constraintTop_toBottomOf="@+id/titleView"
         tools:text="Date" />
 
     <TextView
-        android:id="@+id/subtitle"
+        android:id="@+id/subTitleView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -45,9 +44,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/date"
+        app:layout_constraintStart_toStartOf="@+id/titleView"
+        app:layout_constraintTop_toBottomOf="@+id/dateView"
         tools:text="Subtitle" />
-
 
 </android.support.constraint.ConstraintLayout>

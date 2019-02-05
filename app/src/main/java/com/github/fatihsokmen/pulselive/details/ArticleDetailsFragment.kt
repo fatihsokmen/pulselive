@@ -9,36 +9,21 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.github.fatihsokmen.pulselive.App
+import kotlinx.android.synthetic.main.fragment_article_details.*
 import javax.inject.Inject
 
 class ArticleDetailsFragment : Fragment(), ArticleDetailsFragmentContract.View {
 
-
-    @BindView(R.id.date)
-    lateinit var dateView: TextView
-
-    @BindView(R.id.body)
-    lateinit var bodyView: TextView
-
-    @BindView(R.id.progress)
-    internal lateinit var progressView: ProgressBar
-
     @Inject
     internal lateinit var presenter: ArticleDetailsFragmentContract.Presenter
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_article_details, container, false)
+    }
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_article_details, container, false)
-        ButterKnife.bind(this, view)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val id = activity?.intent?.getStringExtra(ArticleDetailsActivity.KEY_ARTICLE)!!
 
@@ -46,7 +31,6 @@ class ArticleDetailsFragment : Fragment(), ArticleDetailsFragmentContract.View {
 
         presenter.init(id)
 
-        return view
     }
 
     override fun setTitle(title: String) {
@@ -70,12 +54,13 @@ class ArticleDetailsFragment : Fragment(), ArticleDetailsFragmentContract.View {
     }
 
     override fun showError(message: String?) {
-        Snackbar.make(view!!, message ?: "Unknown error", Toast.LENGTH_SHORT).show()
+        Snackbar.make(view!!, message
+                ?: getString(R.string.unknown_error_message), Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
-        presenter.cleanup()
         super.onDestroyView()
+        presenter.cleanup()
     }
 
     companion object {

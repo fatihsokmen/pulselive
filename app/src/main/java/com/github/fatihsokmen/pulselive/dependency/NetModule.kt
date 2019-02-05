@@ -2,7 +2,6 @@ package com.github.fatihsokmen.pulselive.dependency
 
 import android.app.Application
 import com.github.fatihsokmen.pulselive.BuildConfig
-import com.github.fatihsokmen.pulselive.dependency.scope.FragmentViewScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache

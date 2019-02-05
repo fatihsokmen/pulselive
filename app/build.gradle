@@ -25,6 +25,9 @@ android {
             buildConfigField "String", "API_URL", "\"http://dynamic.pulselive.com/test/native/\""
         }
     }
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -50,7 +53,4 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.15'
     kapt 'com.google.dagger:dagger-android-processor:2.15'
     kapt 'com.google.dagger:dagger-compiler:2.15'
-
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    kapt "com.jakewharton:butterknife-compiler:8.8.1"
 }

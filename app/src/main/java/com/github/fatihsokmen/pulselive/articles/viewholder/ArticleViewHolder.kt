@@ -2,43 +2,33 @@ package com.github.fatihsokmen.pulselive.articles.viewholder
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
-import com.github.fatihsokmen.pulselive.R
 import com.github.fatihsokmen.pulselive.details.ArticleDetailsActivity
 import com.github.fatihsokmen.pulselive.articles.data.ArticleDomain
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.view_article.*
 import javax.inject.Inject
 
 class ArticleViewHolder @Inject constructor(
-        itemView: View
-) : RecyclerView.ViewHolder(itemView) {
-
-    @BindView(R.id.title)
-    lateinit var titleView: TextView
-    @BindView(R.id.date)
-    lateinit var dateView: TextView
-    @BindView(R.id.subtitle)
-    lateinit var subTitleView: TextView
+        override val containerView: View
+) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     private lateinit var article: ArticleDomain
 
     init {
-        ButterKnife.bind(this, itemView)
+        itemView.setOnClickListener {
+            onArticleClicked()
+        }
     }
 
     fun bind(article: ArticleDomain) {
         this.article = article
-
         titleView.text = article.title
         dateView.text = article.date
         subTitleView.text = article.subTitle
     }
 
-    @OnClick(R.id.article)
-    fun onArticleClicked() {
-        itemView.context.apply {
+    private fun onArticleClicked() {
+        itemView.context.run {
             startActivity(ArticleDetailsActivity.getIntent(this, article))
         }
     }

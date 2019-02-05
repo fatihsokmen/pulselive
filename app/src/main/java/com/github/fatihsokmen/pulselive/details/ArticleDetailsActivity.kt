@@ -5,23 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.VisibleForTesting
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.github.fatihsokmen.pulselive.R
 import com.github.fatihsokmen.pulselive.articles.data.ArticleDomain
+import kotlinx.android.synthetic.main.activity_articles.*
 
 class ArticleDetailsActivity : AppCompatActivity() {
-
-    @BindView(R.id.toolbar)
-    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_details)
-        ButterKnife.bind(this)
-
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
